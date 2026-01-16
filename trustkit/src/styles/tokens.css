@@ -1,0 +1,101 @@
+:root {
+  /* Primary - Green (Trust/Security) */
+  --tk-primary-50: #f0fdf4;
+  --tk-primary-100: #dcfce7;
+  --tk-primary-200: #bbf7d0;
+  --tk-primary-300: #86efac;
+  --tk-primary-400: #4ade80;
+  --tk-primary-500: #22c55e;
+  --tk-primary-600: #16a34a;
+  --tk-primary-700: #15803d;
+  --tk-primary-800: #166534;
+  --tk-primary-900: #14532d;
+  --tk-primary-950: #052e16;
+
+  /* Destructive - Red */
+  --tk-destructive-50: #fef2f2;
+  --tk-destructive-100: #fee2e2;
+  --tk-destructive-200: #fecaca;
+  --tk-destructive-300: #fca5a5;
+  --tk-destructive-400: #f87171;
+  --tk-destructive-500: #ef4444;
+  --tk-destructive-600: #dc2626;
+  --tk-destructive-700: #b91c1c;
+  --tk-destructive-800: #991b1b;
+  --tk-destructive-900: #7f1d1d;
+  --tk-destructive-950: #450a0a;
+
+  /* Warning - Amber */
+  --tk-warning-50: #fffbeb;
+  --tk-warning-100: #fef3c7;
+  --tk-warning-200: #fde68a;
+  --tk-warning-300: #fcd34d;
+  --tk-warning-400: #fbbf24;
+  --tk-warning-500: #f59e0b;
+  --tk-warning-600: #d97706;
+  --tk-warning-700: #b45309;
+  --tk-warning-800: #92400e;
+  --tk-warning-900: #78350f;
+  --tk-warning-950: #451a03;
+
+  /* Info - Blue */
+  --tk-info-50: #eff6ff;
+  --tk-info-100: #dbeafe;
+  --tk-info-200: #bfdbfe;
+  --tk-info-300: #93c5fd;
+  --tk-info-400: #60a5fa;
+  --tk-info-500: #3b82f6;
+  --tk-info-600: #2563eb;
+  --tk-info-700: #1d4ed8;
+  --tk-info-800: #1e40af;
+  --tk-info-900: #1e3a8a;
+  --tk-info-950: #172554;
+
+  /* Neutrals */
+  --tk-gray-50: #f8fafc;
+  --tk-gray-100: #f1f5f9;
+  --tk-gray-200: #e2e8f0;
+  --tk-gray-300: #cbd5e1;
+  --tk-gray-400: #94a3b8;
+  --tk-gray-500: #64748b;
+  --tk-gray-600: #475569;
+  --tk-gray-700: #334155;
+  --tk-gray-800: #1e293b;
+  --tk-gray-900: #0f172a;
+  --tk-gray-950: #020617;
+
+  /* Semantic Colors */
+  --tk-background: #ffffff;
+  --tk-foreground: #0f172a;
+  --tk-muted: #f1f5f9;
+  --tk-muted-foreground: #64748b;
+  --tk-card: #ffffff;
+  --tk-card-foreground: #0f172a;
+  --tk-border: #e2e8f0;
+  --tk-input: #e2e8f0;
+  --tk-ring: #22c55e;
+
+  /* Radius */
+  --tk-radius: 0.5rem;
+
+  /* Shadows */
+  --tk-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tk-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tk-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Typography */
+  --tk-font-sans: Inter, system-ui, -apple-system, sans-serif;
+}
+
+/* Dark mode support */
+.dark {
+  --tk-background: #0f172a;
+  --tk-foreground: #f8fafc;
+  --tk-muted: #1e293b;
+  --tk-muted-foreground: #94a3b8;
+  --tk-card: #1e293b;
+  --tk-card-foreground: #f8fafc;
+  --tk-border: #334155;
+  --tk-input: #334155;
+  --tk-ring: #22c55e;
+}

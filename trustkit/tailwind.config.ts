@@ -1,0 +1,96 @@
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'var(--tk-primary-50)',
+          100: 'var(--tk-primary-100)',
+          200: 'var(--tk-primary-200)',
+          300: 'var(--tk-primary-300)',
+          400: 'var(--tk-primary-400)',
+          500: 'var(--tk-primary-500)',
+          600: 'var(--tk-primary-600)',
+          700: 'var(--tk-primary-700)',
+          800: 'var(--tk-primary-800)',
+          900: 'var(--tk-primary-900)',
+          950: 'var(--tk-primary-950)',
+          DEFAULT: 'var(--tk-primary-500)',
+        },
+        destructive: {
+          50: 'var(--tk-destructive-50)',
+          100: 'var(--tk-destructive-100)',
+          200: 'var(--tk-destructive-200)',
+          300: 'var(--tk-destructive-300)',
+          400: 'var(--tk-destructive-400)',
+          500: 'var(--tk-destructive-500)',
+          600: 'var(--tk-destructive-600)',
+          700: 'var(--tk-destructive-700)',
+          800: 'var(--tk-destructive-800)',
+          900: 'var(--tk-destructive-900)',
+          950: 'var(--tk-destructive-950)',
+          DEFAULT: 'var(--tk-destructive-500)',
+        },
+        warning: {
+          50: 'var(--tk-warning-50)',
+          100: 'var(--tk-warning-100)',
+          200: 'var(--tk-warning-200)',
+          300: 'var(--tk-warning-300)',
+          400: 'var(--tk-warning-400)',
+          500: 'var(--tk-warning-500)',
+          600: 'var(--tk-warning-600)',
+          700: 'var(--tk-warning-700)',
+          800: 'var(--tk-warning-800)',
+          900: 'var(--tk-warning-900)',
+          950: 'var(--tk-warning-950)',
+          DEFAULT: 'var(--tk-warning-500)',
+        },
+        info: {
+          50: 'var(--tk-info-50)',
+          100: 'var(--tk-info-100)',
+          200: 'var(--tk-info-200)',
+          300: 'var(--tk-info-300)',
+          400: 'var(--tk-info-400)',
+          500: 'var(--tk-info-500)',
+          600: 'var(--tk-info-600)',
+          700: 'var(--tk-info-700)',
+          800: 'var(--tk-info-800)',
+          900: 'var(--tk-info-900)',
+          950: 'var(--tk-info-950)',
+          DEFAULT: 'var(--tk-info-500)',
+        },
+        background: 'var(--tk-background)',
+        foreground: 'var(--tk-foreground)',
+        muted: {
+          DEFAULT: 'var(--tk-muted)',
+          foreground: 'var(--tk-muted-foreground)',
+        },
+        card: {
+          DEFAULT: 'var(--tk-card)',
+          foreground: 'var(--tk-card-foreground)',
+        },
+        border: 'var(--tk-border)',
+        input: 'var(--tk-input)',
+        ring: 'var(--tk-ring)',
+      },
+      borderRadius: {
+        lg: 'var(--tk-radius)',
+        md: 'calc(var(--tk-radius) - 2px)',
+        sm: 'calc(var(--tk-radius) - 4px)',
+      },
+      fontFamily: {
+        sans: ['var(--tk-font-sans)', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'tk-sm': 'var(--tk-shadow-sm)',
+        'tk-md': 'var(--tk-shadow-md)',
+        'tk-lg': 'var(--tk-shadow-lg)',
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
