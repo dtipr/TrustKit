@@ -16,3 +16,4 @@ export {
 } from './Select';
 export { ButtonGroup, type ButtonGroupProps, type ButtonGroupOption } from './ButtonGroup';
 export { Avatar, avatarVariants, type AvatarProps } from './Avatar';
+export { Switch, type SwitchProps } from './Switch';

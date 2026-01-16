@@ -48,6 +48,11 @@ export {
   type AvatarProps,
 } from './components/primitives';
 
+export {
+  Switch,
+  type SwitchProps,
+} from './components/primitives';
+
 // Data Display Components
 export {
   StatusBadge,
@@ -124,6 +129,11 @@ export {
   FilterDropdown,
   type FilterOption,
   type FilterDropdownProps,
+} from './components/forms';
+
+export {
+  FormField,
+  type FormFieldProps,
 } from './components/forms';
 
 // Layout Components

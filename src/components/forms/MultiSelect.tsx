@@ -15,6 +15,7 @@ export interface MultiSelectProps {
   placeholder?: string;
   className?: string;
   disabled?: boolean;
+  label?: string;
 }
 
 const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
@@ -23,9 +24,10 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
       options,
       value = [],
       onChange,
-      placeholder = 'Select items...',
+      placeholder = 'Select...',
       className,
       disabled = false,
+      label,
     },
     ref
   ) => {
@@ -46,76 +48,79 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
     };
 
     return (
-      <Popover.Root open={open} onOpenChange={setOpen}>
-        <Popover.Trigger asChild>
-          <button
-            ref={ref}
-            type="button"
-            disabled={disabled}
-            className={cn(
-              'flex min-h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-              className
-            )}
-          >
-            <div className="flex flex-1 flex-wrap gap-1">
-              {selectedOptions.length === 0 ? (
-                <span className="text-muted-foreground">{placeholder}</span>
-              ) : (
-                selectedOptions.map((option) => (
-                  <span
-                    key={option.value}
-                    className="inline-flex items-center gap-1 rounded-md bg-muted px-2 py-0.5 text-xs font-medium"
-                  >
-                    {option.label}
-                    <button
-                      type="button"
-                      onClick={(e) => handleRemove(option.value, e)}
-                      className="rounded-sm hover:bg-muted-foreground/20"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
-                  </span>
-                ))
+      <div className={className}>
+        {label && (
+          <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            {label}
+          </label>
+        )}
+        <Popover.Root open={open} onOpenChange={setOpen}>
+          <Popover.Trigger asChild>
+            <button
+              ref={ref}
+              type="button"
+              disabled={disabled}
+              className={cn(
+                'flex min-h-10 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:cursor-not-allowed disabled:opacity-50'
               )}
-            </div>
-            <ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
-          </button>
-        </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content
-            className="z-50 min-w-[var(--radix-popover-trigger-width)] rounded-md border bg-background p-1 shadow-md"
-            align="start"
-            sideOffset={4}
-          >
-            {options.map((option) => {
-              const isSelected = value.includes(option.value);
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => handleSelect(option.value)}
-                  className={cn(
-                    'flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-muted',
-                    isSelected && 'bg-muted'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'flex h-4 w-4 items-center justify-center rounded-sm border',
-                      isSelected
-                        ? 'border-primary-500 bg-primary-500 text-white'
-                        : 'border-input'
-                    )}
+            >
+              <div className="flex flex-1 flex-wrap gap-1.5">
+                {selectedOptions.length === 0 ? (
+                  <span className="text-gray-400">{placeholder}</span>
+                ) : (
+                  selectedOptions.map((option) => (
+                    <span
+                      key={option.value}
+                      className="inline-flex items-center gap-1 rounded-md bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700"
+                    >
+                      {option.label}
+                      <button
+                        type="button"
+                        onClick={(e) => handleRemove(option.value, e)}
+                        className="rounded-sm text-blue-500 hover:text-blue-700 hover:bg-blue-200"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </span>
+                  ))
+                )}
+              </div>
+              <ChevronDown className={cn('h-4 w-4 shrink-0 text-gray-400 transition-transform', open && 'rotate-180')} />
+            </button>
+          </Popover.Trigger>
+          <Popover.Portal>
+            <Popover.Content
+              className="z-50 min-w-[var(--radix-popover-trigger-width)] rounded-lg border border-gray-200 bg-white p-1 shadow-lg"
+              align="start"
+              sideOffset={4}
+            >
+              {options.map((option) => {
+                const isSelected = value.includes(option.value);
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => handleSelect(option.value)}
+                    className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm text-gray-700 outline-none hover:bg-gray-100"
                   >
-                    {isSelected && <Check className="h-3 w-3" />}
-                  </div>
-                  {option.label}
-                </button>
-              );
-            })}
-          </Popover.Content>
-        </Popover.Portal>
-      </Popover.Root>
+                    <div
+                      className={cn(
+                        'flex h-4 w-4 items-center justify-center rounded border',
+                        isSelected
+                          ? 'border-primary-500 bg-primary-500 text-white'
+                          : 'border-gray-300 bg-white'
+                      )}
+                    >
+                      {isSelected && <Check className="h-3 w-3" />}
+                    </div>
+                    {option.label}
+                  </button>
+                );
+              })}
+            </Popover.Content>
+          </Popover.Portal>
+        </Popover.Root>
+      </div>
     );
   }
 );
