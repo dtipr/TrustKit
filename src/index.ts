@@ -53,6 +53,12 @@ export {
   type SwitchProps,
 } from './components/primitives';
 
+export {
+  Tag,
+  tagVariants,
+  type TagProps,
+} from './components/primitives';
+
 // Data Display Components
 export {
   StatusBadge,
@@ -80,6 +86,12 @@ export {
   type MetricCardProps,
   type MetricProps,
   type SingleMetricProps,
+} from './components/data-display';
+
+export {
+  ProgressBar,
+  type ProgressBarProps,
+  type ProgressSegment,
 } from './components/data-display';
 
 // Navigation Components

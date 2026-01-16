@@ -17,3 +17,4 @@ export {
 export { ButtonGroup, type ButtonGroupProps, type ButtonGroupOption } from './ButtonGroup';
 export { Avatar, avatarVariants, type AvatarProps } from './Avatar';
 export { Switch, type SwitchProps } from './Switch';
+export { Tag, tagVariants, type TagProps } from './Tag';
