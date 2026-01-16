@@ -1,6 +1,6 @@
 # TrustKit
 
-A React UI component library for Keystone PKI/SSL/Identity products.
+DTI corporate UI component library for all products.
 
 ## Features
 
@@ -14,14 +14,14 @@ A React UI component library for Keystone PKI/SSL/Identity products.
 ## Installation
 
 ```bash
-npm install @keystone/trustkit
+npm install @dti/trustkit
 ```
 
 ## Usage
 
 ```tsx
-import { Button, StatusBadge, DataTable, Sidebar } from '@keystone/trustkit';
-import '@keystone/trustkit/styles.css';
+import { Button, StatusBadge, DataTable, Sidebar } from '@dti/trustkit';
+import '@dti/trustkit/styles.css';
 
 function App() {
   return (

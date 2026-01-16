@@ -1,7 +1,7 @@
 {
-  "name": "@keystone/trustkit",
+  "name": "@dti/trustkit",
   "version": "0.1.0",
-  "description": "React UI component library for Keystone PKI/SSL/Identity products",
+  "description": "DTI corporate UI component library for all products",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -75,15 +75,14 @@
     "react",
     "components",
     "ui",
-    "keystone",
-    "pki",
-    "ssl",
-    "identity",
+    "dti",
+    "corporate",
+    "design-system",
     "trustkit"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/keystone/trustkit"
+    "url": "https://github.com/dtipr/TrustKit"
   }
 }
