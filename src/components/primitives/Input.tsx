@@ -11,7 +11,7 @@ export interface InputProps
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, variant = 'default', icon: Icon, iconPosition = 'left', ...props }, ref) => {
-    const baseClasses = 'flex h-10 w-full rounded-lg border border-gray-300 bg-white text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-50';
+    const baseClasses = 'flex h-10 w-full rounded-lg border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-50 transition-colors';
 
     if (variant === 'search') {
       return (

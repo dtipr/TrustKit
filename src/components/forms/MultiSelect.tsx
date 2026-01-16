@@ -61,7 +61,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
               type="button"
               disabled={disabled}
               className={cn(
-                'flex min-h-10 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:cursor-not-allowed disabled:opacity-50'
+                'flex min-h-10 w-full items-center justify-between rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 disabled:cursor-not-allowed disabled:opacity-50 transition-colors'
               )}
             >
               <div className="flex flex-1 flex-wrap gap-1.5">
