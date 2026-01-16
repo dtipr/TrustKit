@@ -16,6 +16,10 @@ const config: StorybookConfig = {
   },
   staticDirs: ['../Assets'],
   viteFinal: async (config) => {
+    // Set base path for GitHub Pages deployment
+    if (process.env.NODE_ENV === 'production') {
+      config.base = '/TrustKit/';
+    }
     return config;
   },
 };
