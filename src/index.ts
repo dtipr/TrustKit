@@ -141,6 +141,11 @@ export {
   type DataTableProps,
 } from './components/layout';
 
+export {
+  PageHeader,
+  type PageHeaderProps,
+} from './components/layout';
+
 // Auth Components
 export {
   LoginForm,

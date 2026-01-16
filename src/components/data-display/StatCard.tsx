@@ -15,7 +15,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
       <div
         ref={ref}
         className={cn(
-          'flex items-center gap-4 rounded-lg border bg-card p-4 shadow-tk-sm',
+          'flex items-center gap-4 rounded-lg border border-gray-200 bg-white px-4 py-3',
           className
         )}
         {...props}
@@ -23,16 +23,16 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
         {Icon && (
           <div
             className={cn(
-              'flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100',
+              'flex h-10 w-10 items-center justify-center rounded-lg bg-gray-50',
               iconClassName
             )}
           >
-            <Icon className="h-6 w-6 text-primary-600" />
+            <Icon className="h-5 w-5 text-gray-500" />
           </div>
         )}
         <div>
-          <p className="text-2xl font-semibold">{value}</p>
-          <p className="text-sm text-muted-foreground">{label}</p>
+          <p className="text-sm text-gray-500">{label}</p>
+          <p className="text-xl font-semibold text-gray-900">{value}</p>
         </div>
       </div>
     );

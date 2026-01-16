@@ -48,52 +48,10 @@ export const Pending: Story = {
   },
 };
 
-export const Opened: Story = {
-  args: {
-    status: 'opened',
-  },
-};
-
-export const Replied: Story = {
-  args: {
-    status: 'replied',
-  },
-};
-
-export const Ignored: Story = {
-  args: {
-    status: 'ignored',
-  },
-};
-
-export const Booked: Story = {
-  args: {
-    status: 'booked',
-  },
-};
-
-export const Expired: Story = {
-  args: {
-    status: 'expired',
-  },
-};
-
-export const Revoked: Story = {
-  args: {
-    status: 'revoked',
-  },
-};
-
-export const Valid: Story = {
-  args: {
-    status: 'valid',
-  },
-};
-
-export const CustomLabel: Story = {
+export const WithoutIcon: Story = {
   args: {
     status: 'active',
-    children: 'Custom Label',
+    showIcon: false,
   },
 };
 
@@ -114,25 +72,32 @@ export const AllStatuses: Story = {
   ),
 };
 
-export const CertificateStatuses: Story = {
+export const InTable: Story = {
   render: () => (
-    <div className="space-y-4">
-      <div className="flex items-center gap-4">
-        <span className="w-32 text-sm text-muted-foreground">Certificate:</span>
-        <StatusBadge status="valid" />
-      </div>
-      <div className="flex items-center gap-4">
-        <span className="w-32 text-sm text-muted-foreground">Certificate:</span>
-        <StatusBadge status="expired" />
-      </div>
-      <div className="flex items-center gap-4">
-        <span className="w-32 text-sm text-muted-foreground">Certificate:</span>
-        <StatusBadge status="revoked" />
-      </div>
-      <div className="flex items-center gap-4">
-        <span className="w-32 text-sm text-muted-foreground">Certificate:</span>
-        <StatusBadge status="pending" />
-      </div>
-    </div>
+    <table className="text-sm">
+      <tbody>
+        <tr className="border-b">
+          <td className="py-2 pr-8">Alexander James Carter</td>
+          <td className="py-2 pr-8">Business Expansion Loan</td>
+          <td className="py-2">
+            <StatusBadge status="active" />
+          </td>
+        </tr>
+        <tr className="border-b">
+          <td className="py-2 pr-8">Michael Anthony Johnson</td>
+          <td className="py-2 pr-8">Social Media Campaign</td>
+          <td className="py-2">
+            <StatusBadge status="inactive" />
+          </td>
+        </tr>
+        <tr className="border-b">
+          <td className="py-2 pr-8">Sarah Miller Olivia</td>
+          <td className="py-2 pr-8">Website Redesign</td>
+          <td className="py-2">
+            <StatusBadge status="active" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   ),
 };

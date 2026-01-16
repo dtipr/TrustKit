@@ -2,10 +2,11 @@ import * as React from 'react';
 import {
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  Search,
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { Button } from '../primitives/Button';
 
 export interface SidebarItem {
   id: string;
@@ -36,6 +37,9 @@ export interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
   onItemClick?: (item: SidebarItem) => void;
   logo?: React.ReactNode;
   footer?: React.ReactNode;
+  showSearch?: boolean;
+  searchPlaceholder?: string;
+  onSearch?: (query: string) => void;
 }
 
 const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
@@ -50,49 +54,88 @@ const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
       onItemClick,
       logo,
       footer,
+      showSearch = true,
+      searchPlaceholder = 'Search',
+      onSearch,
       ...props
     },
     ref
   ) => {
+    const [searchQuery, setSearchQuery] = React.useState('');
+
     return (
       <aside
         ref={ref}
         className={cn(
-          'flex h-full flex-col border-r bg-card transition-all duration-300',
+          'flex h-full flex-col bg-slate-900 text-white transition-all duration-300',
           collapsed ? 'w-16' : 'w-64',
           className
         )}
         {...props}
       >
-        {/* Header */}
-        <div className="flex h-16 items-center justify-between border-b px-4">
-          {!collapsed && logo}
-          {onCollapsedChange && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => onCollapsedChange(!collapsed)}
-              className="h-8 w-8"
-            >
-              {collapsed ? (
-                <ChevronRight className="h-4 w-4" />
+        {/* User Profile */}
+        {user && (
+          <div className="flex items-center gap-3 border-b border-slate-700 px-4 py-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-700 text-sm font-medium">
+              {user.avatar ? (
+                <img
+                  src={user.avatar}
+                  alt={user.name}
+                  className="h-10 w-10 rounded-full object-cover"
+                />
               ) : (
-                <ChevronLeft className="h-4 w-4" />
+                <span>
+                  {user.name
+                    .split(' ')
+                    .map((n) => n[0])
+                    .join('')
+                    .slice(0, 2)}
+                </span>
               )}
-            </Button>
-          )}
-        </div>
+            </div>
+            {!collapsed && (
+              <div className="flex-1 overflow-hidden">
+                <p className="truncate text-sm font-medium text-white">{user.name}</p>
+                <p className="truncate text-xs text-slate-400">
+                  {user.email}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Search */}
+        {showSearch && !collapsed && (
+          <div className="px-3 py-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder={searchPlaceholder}
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  onSearch?.(e.target.value);
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-800 py-2 pl-9 pr-3 text-sm text-white placeholder-slate-400 focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+              />
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500">
+                ⌘+F
+              </span>
+            </div>
+          </div>
+        )}
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto py-4">
+        <nav className="flex-1 overflow-y-auto px-3 py-2">
           {sections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="mb-4">
               {section.title && !collapsed && (
-                <h3 className="mb-2 px-4 text-xs font-semibold uppercase text-muted-foreground">
+                <h3 className="mb-2 px-3 text-xs font-medium uppercase tracking-wider text-slate-500">
                   {section.title}
                 </h3>
               )}
-              <ul className="space-y-1 px-2">
+              <ul className="space-y-1">
                 {section.items.map((item) => (
                   <SidebarNavItem
                     key={item.id}
@@ -107,41 +150,24 @@ const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
           ))}
         </nav>
 
-        {/* User Profile */}
-        {user && (
-          <div className="border-t p-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-primary-700">
-                {user.avatar ? (
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
-                ) : (
-                  <span className="text-sm font-medium">
-                    {user.name
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')
-                      .slice(0, 2)}
-                  </span>
-                )}
-              </div>
-              {!collapsed && (
-                <div className="flex-1 overflow-hidden">
-                  <p className="truncate text-sm font-medium">{user.name}</p>
-                  <p className="truncate text-xs text-muted-foreground">
-                    {user.email}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
+        {/* Footer */}
+        {footer && !collapsed && (
+          <div className="border-t border-slate-700 p-4">{footer}</div>
         )}
 
-        {/* Footer */}
-        {footer && !collapsed && <div className="border-t p-4">{footer}</div>}
+        {/* Collapse Toggle */}
+        {onCollapsedChange && (
+          <button
+            onClick={() => onCollapsedChange(!collapsed)}
+            className="flex h-10 items-center justify-center border-t border-slate-700 text-slate-400 hover:text-white"
+          >
+            {collapsed ? (
+              <ChevronRight className="h-4 w-4" />
+            ) : (
+              <ChevronLeft className="h-4 w-4" />
+            )}
+          </button>
+        )}
       </aside>
     );
   }
@@ -181,8 +207,8 @@ function SidebarNavItem({
         className={cn(
           'flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
           isActive
-            ? 'bg-primary-100 text-primary-700 font-medium'
-            : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+            ? 'bg-slate-800 text-white'
+            : 'text-slate-300 hover:bg-slate-800 hover:text-white',
           depth > 0 && 'ml-6'
         )}
       >
@@ -191,15 +217,15 @@ function SidebarNavItem({
           <>
             <span className="flex-1 truncate text-left">{item.label}</span>
             {item.badge !== undefined && (
-              <span className="rounded-full bg-muted-foreground/20 px-2 py-0.5 text-xs">
+              <span className="rounded bg-slate-700 px-1.5 py-0.5 text-xs">
                 {item.badge}
               </span>
             )}
             {hasChildren && (
-              <ChevronRight
+              <ChevronDown
                 className={cn(
                   'h-4 w-4 transition-transform',
-                  expanded && 'rotate-90'
+                  expanded && 'rotate-180'
                 )}
               />
             )}
