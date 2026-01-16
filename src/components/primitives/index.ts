@@ -14,3 +14,5 @@ export {
   SelectScrollUpButton,
   SelectScrollDownButton,
 } from './Select';
+export { ButtonGroup, type ButtonGroupProps, type ButtonGroupOption } from './ButtonGroup';
+export { Avatar, avatarVariants, type AvatarProps } from './Avatar';

@@ -36,6 +36,18 @@ export {
   SelectScrollDownButton,
 } from './components/primitives';
 
+export {
+  ButtonGroup,
+  type ButtonGroupProps,
+  type ButtonGroupOption,
+} from './components/primitives';
+
+export {
+  Avatar,
+  avatarVariants,
+  type AvatarProps,
+} from './components/primitives';
+
 // Data Display Components
 export {
   StatusBadge,
@@ -59,7 +71,10 @@ export {
 
 export {
   MetricCard,
+  SingleMetric,
   type MetricCardProps,
+  type MetricProps,
+  type SingleMetricProps,
 } from './components/data-display';
 
 // Navigation Components

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Shield, Users, Activity, DollarSign } from 'lucide-react';
-import { MetricCard } from './MetricCard';
+import { FileText, Send, Eye, MessageSquare, Shield, Users, Activity } from 'lucide-react';
+import { MetricCard, SingleMetric } from './MetricCard';
 
 const meta: Meta<typeof MetricCard> = {
   title: 'Data Display/MetricCard',
@@ -14,109 +14,81 @@ const meta: Meta<typeof MetricCard> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Positive: Story = {
+export const WithTitle: Story = {
   args: {
-    icon: Shield,
-    label: 'Total Certificates',
-    value: '2,350',
-    change: 12.5,
-    changeLabel: 'vs last month',
+    title: 'Initiation',
+    metrics: [
+      { icon: FileText, label: 'Drafted', value: 134, change: 28 },
+      { icon: Send, label: 'Sent', value: 120, change: 22 },
+    ],
   },
 };
 
-export const Negative: Story = {
+export const Engagement: Story = {
   args: {
-    icon: Users,
-    label: 'Active Users',
-    value: '1,234',
-    change: -5.2,
-    changeLabel: 'vs last month',
+    title: 'Engagement',
+    metrics: [
+      { icon: Eye, label: 'Opened', value: 102, change: 9 },
+      { icon: MessageSquare, label: 'Replied', value: 45 },
+    ],
   },
 };
 
-export const Neutral: Story = {
+export const WithoutTitle: Story = {
   args: {
-    icon: Activity,
-    label: 'API Calls',
-    value: '45,678',
-    change: 0,
-    changeLabel: 'vs last week',
+    metrics: [
+      { icon: Shield, label: 'Certificates', value: '2,350', change: 125 },
+      { icon: Users, label: 'Users', value: '1,234', change: -52 },
+      { icon: Activity, label: 'API Calls', value: '45K', change: 81 },
+    ],
   },
 };
 
-export const NoChange: Story = {
+export const SingleMetricOnly: Story = {
   args: {
-    icon: DollarSign,
-    label: 'Revenue',
-    value: '$12,450',
+    metrics: [
+      { icon: Shield, label: 'Active Certificates', value: '2,350', change: 125 },
+    ],
   },
 };
 
-export const WithoutIcon: Story = {
+export const NegativeChange: Story = {
   args: {
-    label: 'Certificates Issued',
-    value: '156',
-    change: 23,
+    title: 'Performance',
+    metrics: [
+      { label: 'Errors', value: 23, change: -15 },
+      { label: 'Warnings', value: 156, change: 8 },
+    ],
   },
 };
 
 export const Dashboard: Story = {
   render: () => (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4" style={{ width: '800px' }}>
       <MetricCard
-        icon={Shield}
-        label="Active Certificates"
-        value="2,350"
-        change={12.5}
-        changeLabel="vs last month"
+        title="Initiation"
+        metrics={[
+          { icon: FileText, label: 'Drafted', value: 134, change: 28 },
+          { icon: Send, label: 'Sent', value: 120, change: 22 },
+        ]}
       />
       <MetricCard
-        icon={Users}
-        label="Active Users"
-        value="1,234"
-        change={-5.2}
-        changeLabel="vs last month"
-      />
-      <MetricCard
-        icon={Activity}
-        label="API Requests"
-        value="45.2K"
-        change={8.1}
-        changeLabel="vs last week"
-      />
-      <MetricCard
-        icon={DollarSign}
-        label="Revenue"
-        value="$24,500"
-        change={15.3}
-        changeLabel="vs last month"
+        title="Engagement"
+        metrics={[
+          { icon: Eye, label: 'Opened', value: 102, change: 9 },
+          { icon: MessageSquare, label: 'Replied', value: 45 },
+        ]}
       />
     </div>
   ),
 };
 
-export const PKIMetrics: Story = {
+export const SingleMetricComponent: Story = {
   render: () => (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-      <MetricCard
-        label="Certificates Issued"
-        value="156"
-        change={23}
-        changeLabel="this month"
-      />
-      <MetricCard
-        label="Certificates Revoked"
-        value="3"
-        change={-50}
-        changeLabel="vs last month"
-        trend="up"
-      />
-      <MetricCard
-        label="Renewal Rate"
-        value="94%"
-        change={2.1}
-        changeLabel="vs last quarter"
-      />
+    <div className="flex gap-8">
+      <SingleMetric icon={FileText} label="Drafted" value={134} change={28} />
+      <SingleMetric icon={Send} label="Sent" value={120} change={22} />
+      <SingleMetric icon={Eye} label="Opened" value={102} change={9} />
     </div>
   ),
 };

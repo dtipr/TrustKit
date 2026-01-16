@@ -8,4 +8,4 @@ export {
   CardContent,
 } from './Card';
 export { StatCard, type StatCardProps } from './StatCard';
-export { MetricCard, type MetricCardProps } from './MetricCard';
+export { MetricCard, SingleMetric, type MetricCardProps, type MetricProps, type SingleMetricProps } from './MetricCard';

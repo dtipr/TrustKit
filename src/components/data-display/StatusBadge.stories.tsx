@@ -48,10 +48,10 @@ export const Pending: Story = {
   },
 };
 
-export const WithoutIcon: Story = {
+export const WithoutDot: Story = {
   args: {
     status: 'active',
-    showIcon: false,
+    showDot: false,
   },
 };
 
