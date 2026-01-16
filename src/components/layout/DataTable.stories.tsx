@@ -228,3 +228,66 @@ export const SmallDataset: Story = {
     columns,
   },
 };
+
+// Member/Opportunity table matching the design
+interface Member {
+  id: string;
+  name: string;
+  opportunity: string;
+  status: 'active' | 'inactive';
+  memberId: string;
+}
+
+const memberData: Member[] = [
+  { id: '1', name: 'Alexander James Carter', opportunity: 'Business Expansion Loan', status: 'active', memberId: '#OM123AA' },
+  { id: '2', name: 'Michael Anthony Johnson', opportunity: 'Social Media Campaign', status: 'inactive', memberId: '#AT456BB' },
+  { id: '3', name: 'Sarah Miller Olivia', opportunity: 'Website Redesign', status: 'active', memberId: '#EA789CC' },
+  { id: '4', name: 'Alexander Thompson Anderson', opportunity: 'CRM Implementation', status: 'inactive', memberId: '#BH101DD' },
+  { id: '5', name: 'Benjamin Harrison Johnson', opportunity: 'E-commerce Setup', status: 'active', memberId: '#VJ234EE' },
+  { id: '6', name: 'Christopher Taylor Richardson', opportunity: 'SEO Optimization', status: 'active', memberId: '#CT567FF' },
+  { id: '7', name: 'Nicholas Thompson Peterson', opportunity: 'Lead Generation Strategy', status: 'active', memberId: '#SR890GG' },
+  { id: '8', name: 'Jonathan Martinez Thompson', opportunity: 'Product Launch', status: 'inactive', memberId: '#NT102HH' },
+  { id: '9', name: 'Theodore Harrison Williams', opportunity: 'Cybersecurity Audit', status: 'inactive', memberId: '#IP345II' },
+  { id: '10', name: 'Elijah Robinson', opportunity: 'Branding and Rebranding', status: 'active', memberId: '#JM678JJ' },
+];
+
+const memberColumns: Column<Member>[] = [
+  {
+    id: 'name',
+    header: 'Name',
+    accessorKey: 'name',
+  },
+  {
+    id: 'opportunity',
+    header: 'Opportunity',
+    accessorKey: 'opportunity',
+  },
+  {
+    id: 'status',
+    header: 'Status',
+    accessorKey: 'status',
+    cell: (row) => <StatusBadge status={row.status} />,
+  },
+  {
+    id: 'memberId',
+    header: 'Member ID',
+    accessorKey: 'memberId',
+  },
+];
+
+export const MemberTable: Story = {
+  args: {
+    data: memberData,
+    columns: memberColumns,
+    selectable: true,
+    pageSize: 10,
+  },
+};
+
+export const Selectable: Story = {
+  args: {
+    data: certificateData,
+    columns,
+    selectable: true,
+  },
+};

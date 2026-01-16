@@ -151,12 +151,12 @@ function DataTableInner<T>(
 
   return (
     <div ref={ref} className={cn('', className)}>
-      <div className="rounded-md border border-gray-200">
+      <div className="rounded-lg border border-gray-200 overflow-hidden">
         <table className="w-full caption-bottom text-sm">
           <thead>
-            <tr className="border-b border-gray-200 bg-gray-50">
+            <tr className="border-b border-gray-100 bg-white">
               {selectable && (
-                <th className="h-12 w-12 px-4">
+                <th className="h-11 w-12 px-4">
                   <Checkbox
                     checked={allSelected}
                     onCheckedChange={handleSelectAll}
@@ -169,7 +169,7 @@ function DataTableInner<T>(
                 <th
                   key={column.id}
                   className={cn(
-                    'h-12 px-4 text-left align-middle text-xs font-medium uppercase tracking-wider text-gray-500',
+                    'h-11 px-4 text-left align-middle text-sm font-medium text-gray-500',
                     column.width
                   )}
                 >
@@ -188,7 +188,7 @@ function DataTableInner<T>(
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
+          <tbody className="divide-y divide-gray-100 bg-white">
             {paginatedData.length === 0 ? (
               <tr>
                 <td
